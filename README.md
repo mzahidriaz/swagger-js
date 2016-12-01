@@ -9,6 +9,36 @@ It's written in javascript and tested with mocha, and is the fastest way to enab
 Check out [Swagger-Spec](https://github.com/swagger-api/swagger-spec) for additional information about the Swagger project, including additional libraries with support for other languages and more.
 
 
+## What's different in this fork?
+
+Construct JSONAPI specs url using existing UI, added a new parameter `queryValue` to the query parameter
+
+
+It will let you create url like `http://somehost.com/?param=abc&fields=name,email&fields[author]=name&fields[blog]=title,desc`
+
+
+Just set query parameter type
+```
+"type": "array",
+"items": {
+  "type": "string"
+},
+"collectionFormat": "queryValue"
+```
+
+On UI just need to pass each paramter in new line. e.g.
+
+```
+name,email
+[author]=name
+[blog]=title,desc
+```
+
+this will generate query parameter
+
+`fields=name,email&fields[author]=name&fields[blog]=title,desc`
+
+
 ### Calling an API with swagger + node.js!
 
 Install swagger-client:
